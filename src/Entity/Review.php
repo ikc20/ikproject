@@ -23,6 +23,12 @@ class Review
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
+    #[ORM\ManyToOne(inversedBy: 'review')]
+    private ?Product $product = null;
+
+    #[ORM\ManyToOne(inversedBy: 'review')]
+    private ?user $users = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +66,30 @@ class Review
     public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getProduct(): ?Product
+    {
+        return $this->product;
+    }
+
+    public function setProduct(?Product $product): static
+    {
+        $this->product = $product;
+
+        return $this;
+    }
+
+    public function getUsers(): ?user
+    {
+        return $this->users;
+    }
+
+    public function setUsers(?user $users): static
+    {
+        $this->users = $users;
 
         return $this;
     }
