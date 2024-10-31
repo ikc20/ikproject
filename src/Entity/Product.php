@@ -26,7 +26,7 @@ class Product
     #[ORM\Column]
     private ?float $rating = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255)]git
     private ?string $imageUrl = null;
 
     #[ORM\Column]
