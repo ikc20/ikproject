@@ -55,6 +55,9 @@ class Product
     #[ORM\OneToMany(targetEntity: OrderItem::class, mappedBy: 'product')]
     private Collection $product;
 
+    #[ORM\Column(length: 100)]
+    private ?string $gender = null;
+
     public function __construct()
     {
         $this->review = new ArrayCollection();
@@ -230,6 +233,18 @@ class Product
                 $product->setProduct(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getGender(): ?string
+    {
+        return $this->gender;
+    }
+
+    public function setGender(string $gender): static
+    {
+        $this->gender = $gender;
 
         return $this;
     }
